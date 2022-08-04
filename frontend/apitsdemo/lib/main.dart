@@ -1,7 +1,12 @@
+import 'package:apitsdemo/fetures/apitsdemo/injection_container.dart';
+import 'package:apitsdemo/fetures/apitsdemo/presentation/cubit/student_cubit.dart';
 import 'package:apitsdemo/fetures/apitsdemo/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import './fetures/apitsdemo/injection_container.dart' as di;
 
-void main() {
+void main() async {
+  await di.init();
   runApp(const MyApp());
 }
 
@@ -18,7 +23,10 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home:  MyHomePage(),
+        home: BlocProvider(
+          create: (context) => sl<StudentListCubit>(),
+          child: MyHomePage(),
+        ),
     );
   }
 }
