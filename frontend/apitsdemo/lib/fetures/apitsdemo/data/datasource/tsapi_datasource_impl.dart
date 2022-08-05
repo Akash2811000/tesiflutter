@@ -15,8 +15,8 @@ class StudentDataSourceImpl implements StudentDataSourcce {
   @override
   Future<Either<Failure, List<StudentModel>>> getAllStudent() async {
     try {
-      final baseurl = '';
-
+      final baseurl = 'https://862e-103-250-145-149.in.ngrok.io/student';
+      print(baseurl);
       final response = await dio.get(baseurl);
       if (response.statusCode == 200) {
         final List<StudentModel> studentlist = [];
